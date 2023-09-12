@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*:focus {
+    outline: 0;
+}
+
+html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    /* align-items: center; */
+    background-color: #212121;
+    /* display: flex; */
+    justify-content: center;
+    /* min-height: 100vh;
+} */
+}
+
+.box {
+    display: grid;
+    grid-gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 1rem auto;
+    max-width: 1200px;
+    width: 90%;
+}
+
+.box .card:before,
+.box .card:after {
+    background-color: #ffffff;
+    border-radius: 4px;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: box-shadow 0.5s ease,
+        transform 0.5s ease;
+    width: 100%;
+    z-index: -1;
+}
+
+.box .card:hover:before {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transform: rotateZ(20deg);
+}
+
+.box .card {
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    height: 300px;
+    margin: 1.5rem auto;
+    position: relative;
+    width: 300px;
+}
+
+.box .card:hover:after {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transform: rotateZ(10deg);
+}
+
+.box .card .img-box {
+    background-color: #222222;
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: bottom 0.5s ease;
+    z-index: 1;
+}
+
+.box .card:hover .img-box {
+    bottom: 80px;
+}
+
+.box .card .img-box img {
+    height: 100%;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.box .card .details {
+    bottom: 10px;
+    height: 60px;
+    left: 10px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+}
+
+.box .card .details h2 {
+    color: #777777;
+    font: 600 20px 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+
+.box .card .details h2 span {
+    color: #f38695;
+    display: block;
+    font: 500 1rem 'Poppins', sans-serif;
+    margin-top: -5px;
+}

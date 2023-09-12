@@ -1,0 +1,85 @@
+<!-- <style>
+  .button {
+    padding: 10px 15px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: cadetblue;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .button:hover {
+    background-color: darkslategray;
+  }
+
+  .button:active {
+    background-color: #3e8e41;
+
+    transform: translateY(4px);
+  }
+</style> -->
+
+<button type="button" class="btn btn-outline-secondary" style="margin-top: 2%">
+  <a href="restaurants" style="color: #ffffff">&laquo;Back</a>
+</button>
+<br /><br /><br />
+
+<h2 style="color: #fff; text-align: center">Order Details</h2>
+<br /><br />
+
+<div class="row">
+  <div *ngIf="orderDetails">
+    <div class="col-md-4 mb-4" *ngFor="let order of orderDetails">
+      <div class="card">
+        <div class="card-body" style="width: 889px; color: black">
+          <div *ngFor="let menuPair of order.menu | keyvalue">
+            <li class="card-text" *ngIf="menuPair.key !== 'imageData'">
+              {{ menuPair.key }} : {{ menuPair.value }}
+            </li>
+          </div>
+
+          <!-- <div *ngIf="order.menu.restDetails"> -->
+          <!-- <h4>Restaurant Details:</h4>
+    <div *ngFor="let restPair of order.menu.restDetails | keyvalue">
+      <p>{{restPair.key}} : {{restPair.value}}</p>
+    </div>
+  </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngFor="let order of orderDetails">
+  <div *ngIf="order.menu">
+    <div *ngFor="let menuPair of order.menu | keyvalue">
+      <li>{{ menuPair.key }}: {{ menuPair.value }}</li>
+    </div>
+  </div>
+</div> -->
+
+<!-- <ul>
+    <li>User ID: {{ order.user.userID }}</li>
+    <li>User Name: {{ order.user.userName }}</li>
+    <li>Date: {{ order.user.date }}</li>
+    <li>User Email: {{ order.user.userEmail }}</li>
+  </ul>
+</div>
+
+<h2>Menu Details</h2>
+<div *ngIf="orderDetails">
+  <ul>
+    <li>Food ID: {{ order.menu.foodId }}</li>
+    <li>Food Name: {{ order.menu.foodName }}</li>
+    <li>Food Price: {{ order.menu.foodPrice }}</li>
+    <li>Food Quantity: {{ order.menu.foodQuantity }}</li>
+  </ul>
+</div>
+</div> -->
+
+<!-- <div *ngIf="orderDetails.length !== 0 ">
+    <p>Loading...</p>
+  </div> -->

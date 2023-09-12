@@ -1,0 +1,89 @@
+<button type="button" class="btn btn-outline-secondary" style="margin-top: 2%">
+  <a href="restaurants" style="color: #ffffff">&laquo;Back</a>
+</button>
+
+<div class="head" style="margin-left: 30%">
+  <h3>View Restaurant Details</h3>
+  <br />
+
+  <table
+    border="5"
+    cellpadding="25"
+    cellspacing="10"
+    style="background-color: #adad85; padding: 100px; color: black"
+  >
+    <tr>
+      <td>
+        <label><b> Restaurant Name: </b></label>
+      </td>
+      <td>{{ restaurant.restaurantName }}</td>
+    </tr>
+
+    <tr>
+      <td>
+        <label> <b> Owner Name: </b></label>
+      </td>
+      <td>{{ restaurant.ownerName }}</td>
+    </tr>
+
+    <tr>
+      <td>
+        <label> <b> Ratings : </b></label>
+      </td>
+      <td>{{ restaurant.ratings }}</td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><b> Cost : </b></label>
+      </td>
+      <td>{{ restaurant.avgCost }}</td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><b> Location : </b></label>
+      </td>
+      <td>{{ restaurant.location }}</td>
+    </tr>
+
+    <tr>
+      <td>
+        <label><b> VegRestaurant : </b></label>
+      </td>
+      <td>{{ restaurant.isVegRestaurant }}</td>
+    </tr>
+  </table>
+</div>
+<br /><br /><br />
+
+<button
+  (click)="addBooking(restaurantId)"
+  type="button"
+  class="btn btn-outline-secondary"
+  style="margin-top: 2%"
+  style="color: #ffffff; background-color: darkorange; margin-left: 40%"
+>
+  Book Now
+</button>
+<br /><br /><br />
+<!-- <div>
+  <div>
+    <label> <b> Restaurant Name: </b></label> {{ restaurant.restaurantName }}
+  </div>
+  <div>
+    <label> <b> Owner Name: </b></label> {{ restaurant.ownerName }}
+  </div>
+  <div>
+    <label> <b> Ratings : </b></label> {{ restaurant.ratings }}
+  </div>
+  <div>
+    <label> <b> Cost : </b></label> {{ restaurant.avgCost }}
+  </div>
+  <div>
+    <label> <b> Location : </b></label> {{ restaurant.location }}
+  </div>
+  <div>
+    <label> <b> isVegRestaurant : </b></label> {{ restaurant.isVegRestaurant }}
+  </div>
+</div> -->

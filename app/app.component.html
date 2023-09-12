@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-sm">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="home" routerLinkActive="active" class="nav-link">Home</a>
+    </li>
+    <!--   <li class="nav-item">
+      <a routerLink="restaurants" routerLinkActive="active" class="nav-link"
+        >Restaurant List</a
+      >
+    </li>
+   <li class="nav-item">
+      <a
+        routerLink="create-restaurant"
+        routerLinkActive="active"
+        class="nav-link"
+        >Add Restaurant</a
+      >
+    </li> -->
+
+    <li class="nav-item dropdown">
+      <a
+        *ngIf="loginService.isUserLoggedIn()"
+        class="nav-link dropdown-toggle"
+        href="active"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Restaurant-Service
+      </a>
+      <ul class="dropdown-menu" style="background-color: grey">
+        <li>
+          <a class="dropdown-item" href="create-restaurant">Add Restaurant</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="menu">Restaurant Menu </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="restaurants"> Restaurant List</a>
+        </li>
+
+        <!-- <li>
+          <a class="dropdown-item" href="search-location">search location</a>
+        </li> -->
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="about-us" routerLinkActive="active" class="nav-link"
+        >About Us</a
+      >
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="contact-us" routerLinkActive="active" class="nav-link"
+        >Contact Us</a
+      >
+    </li>
+
+    <li class="nav-item">
+      <a
+        *ngIf="!loginService.isUserLoggedIn()"
+        routerLink="/login"
+        class="nav-link"
+        >Login</a
+      >
+    </li>
+
+    <li class="nav-item">
+      <a
+        *ngIf="loginService.isUserLoggedIn()"
+        routerLink="/logout"
+        class="nav-link"
+        >LogOut</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<!-- <h1 class="text-center">{{ title }}</h1> -->
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

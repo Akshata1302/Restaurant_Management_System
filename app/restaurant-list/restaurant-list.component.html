@@ -1,0 +1,329 @@
+<button type="button" class="btn btn-outline-secondary" style="margin-top: 2%">
+  <a href="home" style="color: #ffffff">&laquo;Back</a>
+</button>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<h1 class="text-center" style="margin-top: 7%">Restaurant Management System</h1>
+
+<h2 style="text-align: center">Restaurant List</h2>
+<br /><br />
+
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <div class="row" style="margin-top: -38%; margin-left: 110%">
+        <div class="col-md-8">
+          <div class="input-group mb-3">
+            <ul type="none">
+              <li class="nav-item dropdown"></li>
+            </ul>
+            <!-- Add another input field for location -->
+            <input
+              *ngIf="selectedSearchType === 'location'; else restuarantName"
+              type="text"
+              class="form-control"
+              [(ngModel)]="location"
+              placeholder="Search by Restaurant location"
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style="color: black; width: 425px"
+            />
+
+            <ng-template #restuarantName>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="restaurantName"
+                placeholder="Search "
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="color: black; width: 425px"
+              />
+            </ng-template>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  id="01"
+                  class="dropdown-item"
+                  (click)="selectedSearchType = 'location'"
+                  ><b>Restaurant Location</b></a
+                >
+              </li>
+              <li>
+                <a
+                  id="02"
+                  class="dropdown-item"
+                  (click)="selectedSearchType = 'name'"
+                  ><b>Restaurant Name</b></a
+                >
+              </li>
+            </ul>
+
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="search(selectedSearchType)"
+                style="
+                  color: #ffffff;
+                  margin-top: -65%;
+                  margin-left: 360%;
+                  background-color: cadetblue;
+                "
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="float-div2"
+    style="float: right; background-color: cadetblue; margin-left: 82%"
+  >
+    <li
+      type="none"
+      class="nav-item dropdown"
+      style="background-color: cadetblue"
+    >
+      <h4
+        class="nav-link dropdown-toggle"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="color: black"
+      >
+        <b style="color: black; font-weight: 400; font-size: large">Sort By</b>
+      </h4>
+      <ul class="dropdown-menu">
+        <li>
+          <a (click)="sortBy('costHigh')" class="dropdown-item"
+            ><b>Cost High to Low</b></a
+          >
+        </li>
+        <li>
+          <a (click)="sortBy('costLow')" class="dropdown-item"
+            ><b>Cost Low to High</b></a
+          >
+        </li>
+        <li>
+          <a (click)="sortBy('ratingLow')" class="dropdown-item"
+            ><b>Rating Low to High</b></a
+          >
+        </li>
+        <li>
+          <a (click)="sortBy('ratingHigh')" class="dropdown-item"
+            ><b>Rating High to Low</b></a
+          >
+        </li>
+      </ul>
+    </li>
+  </div>
+
+  <div class="div" style="float: left">
+    <ul type="none">
+      <li class="nav-item dropdown">
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a
+          style="
+            background-color: cadetblue;
+            color: black;
+            float: left;
+            margin-top: -30%;
+          "
+          class="nav-link dropdown-toggle"
+          href="active"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Restaurant-Status</a
+        >
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item hoverlink" (click)="getVegRestaurants()"
+              ><b>Veg Restaurant</b></a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="getNonVegRestaurants()"
+              ><b>Non VegRestaurant</b></a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- <button
+    class="btn btn-outline-secondary"
+    type="button"
+    (click)="getVegRestaurants()"
+    style="
+      color: #eee2dc;
+      background: green;
+      font-size: 15px;
+      font-weight: 200;
+      margin-top: 1%;
+    "
+  >
+    Veg Restaurants
+  </button>
+  &nbsp;
+  <button
+    class="btn btn-outline-secondary"
+    type="button"
+    (click)="getNonVegRestaurants()"
+    style="
+      color: #eee2dc;
+      background: #bf0000;
+      font-size: 15px;
+      font-weight: 200;
+      margin-top: -1%;
+    "
+  >
+    Non VegRestaurants
+  </button> -->
+
+  <div title="Restaurant list">
+    <table
+      class="table table-striped table-hover"
+      border="2px"
+      style="margin-top: 3%"
+    >
+      <thead style="background-color: white">
+        <tr>
+          <th>Restaurant Name</th>
+          <th>Owner Name</th>
+          <th>Ratings</th>
+          <th>Location</th>
+          <th>Cost</th>
+          <th>VegRestaurant</th>
+          <th style="text-align: center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          style="color: white"
+          *ngFor="
+            let restaurant of restaurants
+              | paginate : { itemsPerPage: count, currentPage: pageNo }
+          "
+        >
+          <td>{{ restaurant.restaurantName }}</td>
+          <td>{{ restaurant.ownerName }}</td>
+          <td>{{ restaurant.ratings }}</td>
+          <td>{{ restaurant.location }}</td>
+          <td>{{ restaurant.avgCost }}</td>
+          <td>{{ restaurant.isVegRestaurant }}</td>
+
+          <td>
+            <button
+              (click)="updateRestaurant(restaurant.restaurantId)"
+              class="btn btn-info"
+            >
+              <i class="fa fa-refresh fa-spin" style="font-size: 24px"></i>
+              Update
+            </button>
+
+            <button
+              (click)="deleteRestaurant(restaurant.restaurantId)"
+              class="btn btn-danger"
+              style="margin-left: 10px"
+            >
+              <!-- <img src="assets/icons-delete.gif" style="height: 25px" /> -->
+              <i class="fa fa-trash fa-spin" style="font-size: 24px"></i>
+              Delete
+            </button>
+
+            <div class="float-div2">
+              <li
+                type="none"
+                class="nav-item dropdown"
+                style="margin-left: 225px; margin-top: -38px"
+              >
+                <button
+                  class="nav-link dropdown-toggle btn btn-info viewbtn"
+                  href="active"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fa fa-eye fa-spin" style="font-size: 24px"></i>
+                  View
+                </button>
+
+                <ul class="dropdown-menu" style="background-color: bisque">
+                  <li>
+                    <a
+                      (click)="restaurantDetails(restaurant.restaurantId)"
+                      class="btn btn-info"
+                      style="margin-left: 10px"
+                    >
+                      <!-- <img src="assets/icons-view.gif" style="height: 25px" /> -->
+                      <i class="fa fa-eye fa-spin" style="font-size: 24px"></i>
+
+                      View
+                    </a>
+                  </li>
+                  <br />
+
+                  <li>
+                    <a
+                      (click)="getUsersByRestaurantId(restaurant.restaurantId)"
+                      class="btn btn-info"
+                      style="margin-left: 10px"
+                    >
+                      <!-- <img src="assets/icons-view.gif" style="height: 25px" />  -->
+                      <i class="fa fa-eye fa-spin" style="font-size: 24px"></i>
+
+                      User
+                    </a>
+                  </li>
+                  <br />
+
+                  <li>
+                    <a
+                      (click)="addFoodMenu(restaurant.restaurantId)"
+                      class="btn btn-info"
+                      style="margin-left: 10px"
+                    >
+                      <!-- <img src="assets/icons-view.gif" style="height: 25px" />  -->
+                      <i class="fa fa-eye fa-spin" style="font-size: 24px"></i>
+
+                      Menu
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="restaurants !== null">
+          <button
+            class="m-3 btn btn-sm btn-danger"
+            (click)="removeAllRestaurants()"
+          >
+            <i style="font-size: 24px" class="fa">&#xf1f8;</i>
+            Remove All
+          </button>
+        </tr>
+      </tbody>
+    </table>
+    <div style="background-color: gray; width: 295px">
+      <pagination-controls (pageChange)="pageNo = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

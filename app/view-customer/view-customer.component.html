@@ -1,0 +1,76 @@
+<button type="button" class="btn btn-outline-secondary" style="margin-top: 2%">
+  <a href="restaurants" style="color: #ffffff">&laquo;Back</a></button
+><br /><br /><br />
+
+<body>
+  <h1 style="color: #fff; text-align: center">User list</h1>
+  <br />
+  <table border="2" class="table table-striped" style="color: azure">
+    <tr style="background-color: #ffffff; color: black">
+      <th>UserId</th>
+      <th>userName</th>
+      <th>date</th>
+      <th style="text-align: center">userEmail</th>
+      <th style="text-align: center">userOrder</th>
+    </tr>
+    <tr *ngFor="let data_user of user">
+      <td>{{ data_user.userID }}</td>
+      <td>{{ data_user.userName }}</td>
+      <td>{{ data_user.date }}</td>
+      <td style="text-align: center">{{ data_user.userEmail }}</td>
+      <td style="text-align: center">
+        {{ data_user.userOrder }}
+        <button
+          (click)="vieworders(data_user.userID)"
+          type="submit"
+          style="background-color: darkolivegreen; color: #fff"
+        >
+          View-Orders
+        </button>
+      </td>
+    </tr>
+  </table>
+  <br /><br />
+
+  <table
+    border="5"
+    style="margin-left: 25%; background-color: #adad85; padding: 100px"
+  >
+    <div class="container" style="margin: auto; padding: 100px">
+      <div class="inp-wrapper">
+        <div class="date-wrapper">
+          <label for="start-date" style="color: black"
+            >Start Date : &nbsp;</label
+          >
+          <input type="date" id="start-date" [(ngModel)]="startDate" />
+        </div>
+        <br />
+        <br />
+
+        <div class="date-wrapper">
+          <label for="end-date" style="color: black"
+            >End Date :&nbsp;&nbsp;&nbsp;
+          </label>
+          <input type="date" id="end-date" [(ngModel)]="endDate" />
+        </div>
+      </div>
+      <br />
+      <br />
+
+      <div id="output" style="color: black; text-decoration: underline">
+        Select the dates to get started
+      </div>
+      <br />
+
+      <button
+        (click)="deleteDataBtnRange(startDate, endDate)"
+        id="remove-between"
+        style="background-color: coral"
+      >
+        <i style="font-size: 24px" class="fa">&#xf1f8;</i>
+        Remove Data Between Dates
+      </button>
+    </div>
+  </table>
+</body>
+<br /><br />

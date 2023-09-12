@@ -1,0 +1,47 @@
+ 
+.nav-item{
+box-shadow: 3px 3px 8px;
+border-radius: 3px;
+color: black;
+padding: 1px;
+
+
+
+}
+ a {
+     color: #fff;
+   
+    letter-spacing: 0.15em;
+ 
+    position: relative; 
+} 
+
+a::after {
+    content: "";
+    position: absolute;
+    bottom: 5%;
+     left: 50%; 
+    display: block;
+    background: none repeat scroll 0 0 transparent;
+    height: 2px;
+    width: 0;
+     background: hsl(0, 0%, 3%);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s; 
+   
+    
+   
+}
+a:hover {
+    color: black;
+    background-color: orange;
+}
+
+a:hover::after {
+    width: 100%;
+    left: 0;
+}
+.navbar-expand-sm{
+
+    background-color:lightslategrey;
+   
+} 

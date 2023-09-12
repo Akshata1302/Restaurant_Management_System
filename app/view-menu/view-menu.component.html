@@ -1,0 +1,112 @@
+<button type="button" class="btn btn-outline-secondary" style="margin-top: 2%">
+  <a href="restaurants" style="color: #ffffff">&laquo;Back</a>
+</button>
+
+<button
+  (click)="addMenu(restaurantId)"
+  type="button"
+  class="btn btn-outline-secondary"
+  style="
+    color: #ffffff;
+    background-color: darkorange;
+    float: right;
+    margin-top: 2%;
+  "
+>
+  Add Food
+</button>
+<br /><br />
+
+<div class="row">
+  <div class="col-md-4 mb-4" *ngFor="let menu of menuList; let i = index">
+    <div class="card">
+      <img [src]="menu.imageData" class="card-img-top" alt="Food Image" />
+      <div class="card-body">
+        <h5 class="card-title" style="color: black">{{ menu.foodName }}</h5>
+        <p class="card-text" style="color: black">
+          Price: {{ menu.foodPrice | currency }}
+          <br />
+          Quantity: {{ menu.foodQuantity }}
+          <!-- {{ menu.foodID }} -->
+        </p>
+        <hr />
+
+        <!-- Dropdown to select a user -->
+        <select class="form-control" [(ngModel)]="selectedUserIds[i]">
+          <option value="">Select a user</option>
+          <option *ngFor="let user of users" [value]="user.userID">
+            {{ user.userName }}
+          </option>
+        </select>
+        <br />
+
+        <!-- Displaying the user list (optional) -->
+        <!-- <div *ngIf="users.length > 0">
+          <h2>User List</h2>
+          <ul>
+            <li *ngFor="let user of users">{{ user.userName }}</li>
+          </ul>
+        </div> -->
+
+        <!-- "Order" button -->
+        <a
+          (click)="orderFood(i, selectedUserIds[i], menu.foodID)"
+          class="btn btn-outline-success btn-sm"
+          style="color: black"
+          ><b>Order</b></a
+        >
+
+        <!-- 
+              <select [(ngModel)]="selectedUser" class="form-control">
+  <option *ngFor="let user of users" [value]="user.userID">{{ user.userName }}</option>
+</select> -->
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a
+          (click)="deleteFoodById(menu.foodID)"
+          class="btn btn-outline-danger btn-sm"
+          style="color: black"
+          ><i style="font-size: 24px" class="fa">&#xf1f8;</i
+          ><b>Delete a Food Item</b></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<td *ngIf="menuList !== null">
+  <button class="m-3 btn btn-sm btn-danger" (click)="removeAllFoods()">
+    <i style="font-size: 24px" class="fa">&#xf1f8;</i>
+    Remove All Food
+  </button>
+</td>
+
+<!-- <div class="main"><h2>Menu Card..</h2></div>
+<br />
+<div title=" Order menu">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <img src="assets/41.jpg" alt="" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">
+              Dosa
+              <br />
+
+              <h6>Price :-80Rs/-</h6>
+            </h5>
+
+            <a href="create-restaurant" class="btn btn-outline-success btn-sm"
+              >Order</a
+            >
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+</div>
+ -->
+
+<!-- [disabled]="foodForm.invalid || !imageData" -->

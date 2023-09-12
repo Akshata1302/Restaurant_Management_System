@@ -1,0 +1,141 @@
+<button type="button" class="btn btn-outline-secondary" style="margin-top: 2%">
+  <a href="restaurants" style="color: #ffffff">&laquo;Back</a>
+</button>
+
+<div
+  class="col-md-6 offset-md-3"
+  style="
+    background-color: #adad85;
+    margin: auto;
+    padding: 100px;
+    margin-top: 2%;
+  "
+>
+  <h3>Update Restaurant</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label> Restaurant Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="restaurantName"
+        [(ngModel)]="restaurant.restaurantName"
+        name="restaurantName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label> Owner Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ownerName"
+        [(ngModel)]="restaurant.ownerName"
+        name="ownerName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label> Ratings </label>
+      <input
+        type="text"
+        class="form-control"
+        id="rating"
+        [(ngModel)]="restaurant.ratings"
+        name="ratings"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Cost </label>
+      <input
+        type="text"
+        class="form-control"
+        id="avgCost"
+        [(ngModel)]="restaurant.avgCost"
+        name="avgCost"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location"
+        [(ngModel)]="restaurant.location"
+        name="location"
+      />
+    </div>
+
+    <div class="form-check">
+      <label>Type Of Restaurant:</label><br />
+      <input
+        class="form-check-input"
+        type="radio"
+        name="isVegRestaurant"
+        [(ngModel)]="restaurant.isVegRestaurant"
+        value="true"
+      />
+      <label class="form-check-label">Veg Restaurant</label><br />
+      <input
+        class="form-check-input"
+        type="radio"
+        name="isNonVegRestaurant"
+        [(ngModel)]="restaurant.isVegRestaurant"
+        value="false"
+      />
+      <label class="form-check-label">Non-Veg Restaurant</label><br />
+    </div>
+    <br />
+
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</div>
+<br />
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>User Orders</title>
+    <script>
+      function showOrders() {
+        var userId = document.getElementById("userId").value;
+        var ordersDiv = document.getElementById("orders");
+
+        // In a real scenario, you would fetch the user's orders from a database or API
+        // For this example, we'll use a dummy array
+        var dummyOrders = [
+          { id: 1, user: "user123", product: "Product A" },
+          { id: 2, user: "user123", product: "Product B" },
+          { id: 3, user: "user123", product: "Product C" },
+          // Add more orders as needed
+        ];
+
+        var userOrders = dummyOrders.filter(function (order) {
+          return order.user === userId;
+        });
+
+        var ordersHTML = "<ul>";
+        userOrders.forEach(function (order) {
+          ordersHTML +=
+            "<li>Order ID: " +
+            order.id +
+            " - Product: " +
+            order.product +
+            "</li>";
+        });
+        ordersHTML += "</ul>";
+
+        ordersDiv.innerHTML = ordersHTML;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>User Orders</h1>
+    <label for="userId">Enter User ID: </label>
+    <input type="text" id="userId" />
+    <button onclick="showOrders()">Show Orders</button>
+    <div id="orders"></div>
+  </body>
+</html> -->

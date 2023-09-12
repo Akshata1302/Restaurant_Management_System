@@ -1,0 +1,99 @@
+<button type="button" class="btn btn-outline-secondary" style="margin-top: 2%">
+  <a href="restaurants" style="color: #ffffff">&laquo;Back</a>
+</button>
+
+<div
+  class="col-md-6 offset-md-3"
+  style="
+    background-color: #adad85;
+    margin: auto;
+    padding: 100px;
+    margin-top: 2%;
+  "
+>
+  <h3 style="color: black">Create Restaurant</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label> Restaurant Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="RestaurantName"
+        placeholder="Restaurant Name"
+        [(ngModel)]="restaurant.restaurantName"
+        name="RestaurantName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Owner Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="OwnerName"
+        placeholder="Owner Name"
+        [(ngModel)]="restaurant.ownerName"
+        name="OwnerName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Rating</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Ratings"
+        placeholder="Rating"
+        [(ngModel)]="restaurant.ratings"
+        name="Ratings"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Cost</label>
+      <input
+        type="text"
+        class="form-control"
+        id="avgCost"
+        placeholder="aCost"
+        [(ngModel)]="restaurant.avgCost"
+        name="avgCost"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location"
+        placeholder="location"
+        [(ngModel)]="restaurant.location"
+        name="location"
+      />
+    </div>
+
+    <div class="form-check">
+      <label>Type Of Restaurant:</label><br />
+      <input
+        class="form-check-input"
+        type="radio"
+        name="isVegRestaurant"
+        [(ngModel)]="restaurant.isVegRestaurant"
+        value="true"
+      />
+      <label class="form-check-label">Veg Restaurant</label><br />
+      <input
+        class="form-check-input"
+        type="radio"
+        name="isNonVegRestaurant"
+        [(ngModel)]="restaurant.isVegRestaurant"
+        value="false"
+      />
+      <label class="form-check-label">Non-Veg Restaurant</label><br />
+    </div>
+    <br />
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</div>
+<br />
